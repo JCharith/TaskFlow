@@ -4,9 +4,17 @@ import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import styles from "./dashboard.module.css";
 
+// Explicit type for task statistics to fix Railway build errors
+interface TaskStatItem {
+  status: string;
+  _count: {
+    status: number;
+  };
+}
+
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
-  
+
   if (!session || !session.user) {
     redirect("/login");
   }
@@ -14,17 +22,22 @@ export default async function DashboardPage() {
   const userId = session.user.id;
   const role = session.user.role;
 
-  // Fetch some stats
+  // Fetch project count
   const projectCount = await prisma.project.count();
-  const taskStats = await prisma.task.groupBy({
+
+  // Fetch task stats with explicit grouping
+  const taskStats = (await prisma.task.groupBy({
     by: ['status'],
     where: role === "ADMIN" ? {} : { assigneeId: userId },
-    _count: true
-  });
+    _count: {
+      status: true
+    }
+  })) as unknown as TaskStatItem[];
 
-  const todoCount = taskStats.find(s => s.status === "TODO")?._count || 0;
-  const inProgressCount = taskStats.find(s => s.status === "IN_PROGRESS")?._count || 0;
-  const doneCount = taskStats.find(s => s.status === "DONE")?._count || 0;
+  // Explicit type annotations on 's' fix the implicit 'any' issue
+  const todoCount = taskStats.find((s: TaskStatItem) => s.status === "TODO")?._count.status || 0;
+  const inProgressCount = taskStats.find((s: TaskStatItem) => s.status === "IN_PROGRESS")?._count.status || 0;
+  const doneCount = taskStats.find((s: TaskStatItem) => s.status === "DONE")?._count.status || 0;
 
   const overdueCount = await prisma.task.count({
     where: {
@@ -45,7 +58,9 @@ export default async function DashboardPage() {
     <div className={styles.page}>
       <header className={styles.header}>
         <h1 className={styles.title}>Dashboard Overview</h1>
-        <p className={styles.subtitle}>Welcome back, {session?.user?.name || "User"}. Here is what's happening.</p>
+        <p className={styles.subtitle}>
+          Welcome back, {session?.user?.name || "User"}. Here is what's happening.
+        </p>
       </header>
 
       <div className={styles.statsGrid}>
@@ -63,7 +78,9 @@ export default async function DashboardPage() {
         </div>
         <div className={`${styles.statCard} glass`}>
           <p className={styles.statLabel}>Overdue</p>
-          <p className={styles.statValue} style={{ color: overdueCount > 0 ? "var(--danger)" : "var(--text)" }}>{overdueCount}</p>
+          <p className={styles.statValue} style={{ color: overdueCount > 0 ? "var(--danger)" : "var(--text)" }}>
+            {overdueCount}
+          </p>
         </div>
       </div>
 
