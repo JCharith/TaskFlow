@@ -1,0 +1,109 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 800;
+}
+
+.subtitle {
+  color: var(--text-muted);
+}
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.taskCard {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.taskMain {
+  flex: 1;
+}
+
+.taskHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.projectName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statusBadge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.todo { background: rgba(148, 163, 184, 0.2); color: var(--text-muted); }
+.in_progress { background: rgba(99, 102, 241, 0.2); color: var(--primary); }
+.done { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+
+.taskTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.taskDesc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.taskActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 150px;
+}
+
+.dueDate {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.statusSelect {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.loading, .empty {
+  text-align: center;
+  padding: 5rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .taskCard {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .taskActions {
+    align-items: flex-start;
+    width: 100%;
+  }
+}
