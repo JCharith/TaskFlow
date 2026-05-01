@@ -22,9 +22,9 @@ export default async function DashboardPage() {
     _count: true
   });
 
-  const todoCount = taskStats.find(s => s.status === "TODO")?._count || 0;
-  const inProgressCount = taskStats.find(s => s.status === "IN_PROGRESS")?._count || 0;
-  const doneCount = taskStats.find(s => s.status === "DONE")?._count || 0;
+  const todoCount = taskStats.find((s: typeof taskStats[number]) => s.status === "TODO")?._count || 0;
+  const inProgressCount = taskStats.find((s: typeof taskStats[number]) => s.status === "IN_PROGRESS")?._count || 0;
+  const doneCount = taskStats.find((s: typeof taskStats[number]) => s.status === "DONE")?._count || 0;
 
   const overdueCount = await prisma.task.count({
     where: {
