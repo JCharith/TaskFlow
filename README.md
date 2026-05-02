@@ -2,81 +2,82 @@
 
 Manage Projects with **Precision.**
 
-TaskFlow is a beautiful, high-performance task management system designed for teams that demand excellence. Built with the latest web technologies, it provides a premium experience for tracking progress, assigning roles, and hitting deadlines.
+TaskFlow is a high-performance, premium task management system engineered for teams that demand excellence. Built with the cutting-edge Next.js 16 architecture, it provides a seamless, glassmorphic experience for tracking complex workflows, managing granular permissions, and visualizing team performance in real-time.
 
-![TaskFlow Hero](https://images.unsplash.com/photo-1540350394557-8d14678e7f91?auto=format&fit=crop&q=80&w=2000&ixlib=rb-4.0.3)
+![TaskFlow Hero](./public/hero.png)
 
 ## 🚀 Features
 
-- **Role-Based Access Control (RBAC)**: Granular permissions for Admins and Members to keep your team organized and secure.
-- **Project Management**: Organize tasks into distinct projects with dedicated ownership.
-- **Task Tracking**: Comprehensive task lifecycle management with statuses (TODO, IN PROGRESS, DONE) and due dates.
-- **Real-time Dashboard**: A central hub to monitor project health, overdue tasks, and recent team activity.
-- **Modern Aesthetics**: A premium, high-performance dark interface utilizing Tailwind CSS 4 and glassmorphism.
-- **Secure Authentication**: Robust session management and password security powered by NextAuth.js and bcrypt.
+- **Role-Based Access Control (RBAC)**: Robust permission system with granular controls for Admins and Members, ensuring secure and organized collaboration.
+- **Dynamic Project Ecosystem**: Effortlessly organize tasks into distinct projects with dedicated ownership and milestone tracking.
+- **Advanced Task Lifecycle**: Comprehensive management with real-time status updates (TODO, IN PROGRESS, DONE) and automated overdue alerts.
+- **Next.js 16 Optimization**: Fully stabilized for the latest Next.js features, including the new **Proxy (Middleware) API** for ironclad security and high-performance server components.
+- **Premium Visual Intelligence**: A stunning dark-mode interface utilizing **Tailwind CSS 4**, featuring glassmorphism effects and parallelized data fetching for near-instant dashboard loading.
+- **Secure Authentication**: Enterprise-grade session management powered by NextAuth.js and bcrypt encryption.
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router & Proxy API)
-- **Library**: [React 19](https://react.dev/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/), CSS Modules
-- **Database**: SQLite via [better-sqlite3](https://github.com/WiseLibs/better-sqlite3)
-- **ORM**: [Prisma](https://www.prisma.io/)
-- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Core Framework**: [Next.js 16.2](https://nextjs.org/) (App Router & Proxy API)
+- **UI Library**: [React 19](https://react.dev/)
+- **Styling Engine**: [Tailwind CSS 4](https://tailwindcss.com/) with Custom CSS Variables
+- **Database Architecture**: SQLite via [better-sqlite3](https://github.com/WiseLibs/better-sqlite3)
+- **Persistence Layer**: [Prisma ORM](https://www.prisma.io/)
+- **Identity & Access**: [NextAuth.js](https://next-auth.js.org/)
+- **Programming Language**: [TypeScript](https://www.typescriptlang.org/)
 
 ## 🏁 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm / yarn / pnpm
+- **Node.js**: 18.17.0 or higher
+- **Package Manager**: npm, yarn, or pnpm
 
 ### Installation
 
-1. **Clone the repository**:
+1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/taskflow.git
-   cd taskflow
+   git clone https://github.com/JCharith/TaskFlow.git
+   cd TaskFlow
    ```
 
-2. **Install dependencies**:
+2. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-3. **Configure Environment Variables**:
+3. **Environment Configuration**:
    Create a `.env` file in the root directory:
    ```env
    DATABASE_URL="file:./dev.db"
-   NEXTAUTH_SECRET="your-secret-here"
+   NEXTAUTH_SECRET="your-secure-random-secret"
    NEXTAUTH_URL="http://localhost:3000"
    ```
 
-4. **Initialize Database**:
+4. **Initialize Database Schema**:
    ```bash
    npx prisma db push
    ```
 
-5. **Run the development server**:
+5. **Launch Development Server**:
    ```bash
    npm run dev
    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the results.
+Visit [http://localhost:3000](http://localhost:3000) to experience TaskFlow.
 
-## 📂 Project Structure
+## 📂 Project Architecture
 
-- `src/app`: Next.js 16 App Router pages and API routes.
-- `src/components`: Reusable UI components.
-- `src/lib`: Shared utilities, Prisma client, and Auth configuration.
-- `src/proxy.ts`: Next.js 16 Proxy configuration (authentication guard).
-- `prisma/`: Database schema and migrations.
+- `src/app/`: Next.js 16 App Router implementation featuring parallel routing and optimized data fetching.
+- `src/proxy.ts`: Next.js 16 Proxy configuration, serving as the primary authentication and security guard.
+- `src/components/`: Modular UI components built with accessibility and performance in mind.
+- `src/lib/`: Shared utilities, including Prisma client singleton and NextAuth configuration.
+- `prisma/`: Database schema definitions and migration history.
 
 ## 🛡️ License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See the `LICENSE` file for full details.
 
 ---
 
-Built for the future of work.
+**Built for the future of collaborative excellence.**
+
