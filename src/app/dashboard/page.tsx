@@ -89,7 +89,7 @@ export default async function DashboardPage() {
         <div className={`${styles.activityList} glass`}>
           {recentTasks.length > 0 ? (
             <div className={styles.taskList}>
-              {recentTasks.map(task => (
+              {recentTasks.map((task: { id: string; title: string; status: string; project: { name: string } }) => (
                 <div key={task.id} className={styles.taskItem}>
                   <div className={styles.taskInfo}>
                     <span className={styles.taskTitle}>{task.title}</span>
